@@ -16,14 +16,20 @@ app.get('/notes', (req, res) => {
 })
 
 app.get('/api/notes', async (req, res) => {
-  const currentNotes = await DB.readNotes()
-  console.log(currentNotes);
-  res.json(currentNotes)
+  try {  
+    const currentNotes = await DB.readNotes()
+    console.log(currentNotes);
+    res.json(currentNotes)
+  } catch (e){
+    console.log(e);
+  }
 })
 
 app.post('/api/notes', async (req, res) => {
   const newNote = req.body;
   const currentNotes = await DB.readNotes()
+  await DB.writeNotes([...currentNotes, newNote]) 
+  res.json(newNote)
 })
 
 app.listen(PORT, () => console.log(`Note Taker App listening on port:${PORT}`))
