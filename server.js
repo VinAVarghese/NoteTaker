@@ -39,12 +39,10 @@ app.post('/api/notes', async (req, res) => {
 // Delete-er
 app.delete('/api/notes/:id', async (req, res) => {
   const chosenID = req.params.id
-  // console.log(chosenID + " has been deleted");
   let currentNotes = await DB.readNotes()
-  console.log(`These are IDS ${currentNotes}`);
-  // const remainingNotes = currentNotes.filter(currentNotes.id ==! chosenID)
-  
-  // await DB.writeNotes([...remainingNotes]) 
+  // Some function to check chosenID with IDs of objects and then delete that
+  // await DB.writeNotes([...currentNotes, notes]) EDIT TO ONLY WRITE LEFT OVER OBJECTS
+  // console.log(chosenID + " has been deleted");
 })
 
 // Listening
