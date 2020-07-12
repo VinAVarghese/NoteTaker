@@ -1,3 +1,4 @@
+// Require (built in node methods and data from db.json)
 const util = require("util")
 const fs = require("fs")
 const notesData = "./Develop/db/db.json"
@@ -5,7 +6,7 @@ const notesData = "./Develop/db/db.json"
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
-
+// Singleton class to read and write db.json
 class DB {
     async readNotes(){
         try {
@@ -24,4 +25,5 @@ class DB {
     }
 }
 
+// Exporting single instance for server.js
 module.exports = new DB();

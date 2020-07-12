@@ -28,7 +28,7 @@ app.get('/api/notes', async (req, res) => {
   }
 })
 
-// API Controller
+// API Post
 app.post('/api/notes', async (req, res) => {
   const notes = req.body;
   let currentNotes = await DB.readNotes()
@@ -36,13 +36,19 @@ app.post('/api/notes', async (req, res) => {
   res.json(notes)
 })
 
-// Delete-er
+// API Delete Chosen ID
 app.delete('/api/notes/:id', async (req, res) => {
   const chosenID = req.params.id
+  const notes = req.body;
+
   let currentNotes = await DB.readNotes()
-  // Some function to check chosenID with IDs of objects and then delete that
-  // await DB.writeNotes([...currentNotes, notes]) EDIT TO ONLY WRITE LEFT OVER OBJECTS
-  // console.log(chosenID + " has been deleted");
+  const remainingNotes = currentNotes.filter((notes) => {
+    return notes.id !== chosenID
+  })
+  await DB.writeNotes([...remainingNotes])
+
+  res.json(notes)
+  console.log("The note has been deleted");
 })
 
 // Listening
