@@ -1,7 +1,6 @@
 const util = require("util")
 const fs = require("fs")
 const notesData = "./Develop/db/db.json"
-// const notesData = "db.json" //test route
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -26,13 +25,3 @@ class DB {
 }
 
 module.exports = new DB();
-
-// const testDB = new DB();
-// const test = async ()=>{
-//     await testDB.writeNotes({
-//         title:"Test Note!!!!",
-//         text: "Test text content!!!!"
-//     })
-//     console.log(await testDB.readNotes())
-// }
-// test()
