@@ -29,5 +29,7 @@
   Feel free to reach out with any questions by emailing be with a subject line of...  RE:NoteTakerExpress
 
   ## Links/Images
+  [Click For Deployed Application](https://note-taker-ex.herokuapp.com/)
+
   ![Screenshot1](screenshot1.png)
   ![Screenshot2](screenshot2.png)
